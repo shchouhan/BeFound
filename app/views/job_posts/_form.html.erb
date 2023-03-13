@@ -1,0 +1,31 @@
+<%= form_for @job_post do |form| %>
+
+  <% if @job_post.errors.any? %>
+    <% @job_post.errors.full_messages.each do |message| %>
+      <p class = "abc"><%= message %></p>
+    <% end %>
+  <% end %>
+
+    <div class = "abc">
+    <%= form.label :category_name %><br>
+    <%= form.collection_select(:category_id, Category.all, :id, :category_name, :prompt => 'Select') %>
+
+    </div>
+    <div class = "abc">
+    <%= form.label :job_role %><br>
+    <%= form.text_field :job_role %>  
+    </div>
+    <div class = "abc">
+    <%= form.label :job_description %><br>
+    <%= form.text_area :job_description %>
+    </div>    
+    <div class = "abc">
+    <%= form.label :vacancies %><br>
+    <%= form.number_field :vacancies %>
+    </div>   
+    <div class = "abc">
+    <%= form.submit 'Submit Post' %><br>
+    </div>
+  </div>
+</div>
+<% end %>

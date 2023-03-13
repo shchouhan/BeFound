@@ -1,0 +1,12 @@
+<div class = "tab">
+<p class = "abc"><%= notice %></p>
+
+<h1 class = "abc"> Your Profile</h1>
+
+<p class = "abc" ><strong>Name:</strong><%= current_user.user_name %></p>
+<p class = "abc" ><strong>Email:</strong><%= current_user.email %></p>
+<p class = "abc" ><strong>Contact:</strong><%= current_user.contact %></p>
+<p class = "abc" ><strong>Address:</strong><%= current_user.address %></p>
+
+<div class = "abc" ><%= link_to 'Back', root_path%> | <%= link_to 'Edit', edit_user_registration_path(current_user) %></div>
+</div>
