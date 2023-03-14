@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :job_posts 
   # get 'job_posts/index'
-  # get 'job_posts/search'
+  get '/search' , to: "job_posts#search"
   # get 'job_posts/new'
   # post 'job_posts/create'
   # get 'job_post/show'

@@ -1,3 +1,5 @@
+<h1 class = "abc">Welcome to Be Found!</h1>
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -22,5 +24,5 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+<%= button_to "Sign in as Admin", new_admin_user_session_path%>
 <%= render "devise/shared/links" %>

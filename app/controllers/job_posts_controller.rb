@@ -3,16 +3,21 @@ before_action :set_job_post, only: %i[show edit update destroy]
 
 
 def index
-  if current_user.user_type == "Contractor"
-    @job_posts = JobPost.find_by(current_user.id)
+  
+  if current_user.user_type == "contractor"
+    @job_posts = JobPost.where("user_id = ?", current_user.id)
+    if @job_posts == nil
+      redirect_to root_path, notice: 'You have not created any job posts yet!'
+    end
   else
     @job_posts = JobPost.all
   end
 end
 
 def search
-  
-  @job_post = JobPost.where("category_name LIKE?", "%" + params[:category_name] + "%")
+
+  @job_posts = JobPost.where("category_id = ?",params[:category_id])
+
 end
 
 def new
@@ -40,12 +45,12 @@ end
 def edit
 end
 def update
-  @job_post.update(job_post_params)
+  if @job_post.update(job_post_params)
   redirect_to job_post_path(@job_post), notice: 'Your Job Post has been updated successfully!'
-  # else
-  #    render :edit
+  else
+  render :edit
   #   # render plain: "OK"
-  # end
+  end
 end
 
 def destroy
@@ -56,7 +61,7 @@ end
 
 private
 def job_post_params
-  params.require(:job_post).permit( :job_role, :category_id,:job_description, :vacancies, :user_id)
+  params.require(:job_post).permit( :job_role, :category_id,:job_description, :vacancies, :user_id, :salary, :qualification)
 end
 
 def set_job_post

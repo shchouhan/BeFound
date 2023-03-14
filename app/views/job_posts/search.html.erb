@@ -1,16 +1,6 @@
-<div class= "tab">
-  <p><%= notice %></p>
-
-  <%= form_with url: "/search", method: :get do |form| %>
-  <div class = "abc">
-    <%= form.label :category_name, "Search for:" %>
-    <%= form.select :category_name, ['Electrical', 'Mechanical', 'Civil', 'IT', 'Medical', 'Household', 'Teaching']%> 
-    <%= form.submit "Search" %>
-  </div>
-  <% end %>
-
-
-  <table border= '1'>
+<div class = "tab">
+<h1 class = "abc ">Search Results</h1>
+<table border= '1'>
   <%= stylesheet_link_tag "main" %>
     <thead>
       <tr>

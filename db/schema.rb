@@ -55,6 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
     t.string "job_role"
     t.text "job_description"
     t.integer "vacancies"
+    t.integer "salary"
+    t.text "qualification"
     t.bigint "user_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
@@ -74,7 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
     t.string "user_name"
     t.string "contact"
     t.text "address"
-    t.string "user_type"
+    t.integer "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
