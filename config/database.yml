@@ -92,3 +92,4 @@ production:
   database: BeFound_production
   username: BeFound
   password: <%= ENV["BE_FOUND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
