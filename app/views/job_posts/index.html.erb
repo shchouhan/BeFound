@@ -4,7 +4,7 @@
   <%= form_with url: "/search", method: :get do |form| %>
   <div class = "abc">
     <%= form.label :category_name, "Search for:" %>
-    <%= form.select :category_name, ['Electrical', 'Mechanical', 'Civil', 'IT', 'Medical', 'Household', 'Teaching']%> 
+        <%= form.collection_select(:category_id, Category.all, :id, :category_name, :prompt => 'Select') %>
     <%= form.submit "Search" %>
   </div>
   <% end %>
@@ -14,7 +14,7 @@
   <%= stylesheet_link_tag "main" %>
     <thead>
       <tr>
-        <th class = "abc">Job Role</th><br>
+        <th class = "abc">Job Role </th><br>
         <th class = "abc">Job Description</th><br>
         <th class = "abc">Vacancies</th><br>
         <th class = "abc">Salary</th><br>
@@ -35,7 +35,9 @@
             <td class = "abc"><%= link_to 'View', job_post %></td>
             <td class = "abc"><%= link_to 'Edit', edit_job_post_path(job_post) %></td>
             <td class = "abc"><%= link_to 'Delete', job_post_path(job_post), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
-    	    </tr>
+    	   
+            <td class = "abc"><%= link_to 'Applications', "/show_applies/#{job_post.id}"%><br> 
+          </tr>
     	  </tbody>
     	<% end %>
     <% else %>
@@ -48,7 +50,7 @@
             <td class = "abc"><%= job_post.salary %></td>
             <td class = "abc"><%= job_post.qualification %></td>
             <td class = "abc"><%= link_to 'View', job_post %></td>
-            
+            <td class = "abc"><%= link_to 'Apply', apply_path(job_post) %></td>
         	</tr>
         	</tbody>
     	<% end %>

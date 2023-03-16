@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_15_061426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,8 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
   end
 
   create_table "applied_jobs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "job_post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_post_id"], name: "index_applied_jobs_on_job_post_id"
+    t.index ["user_id"], name: "index_applied_jobs_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -65,6 +69,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
     t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
+  create_table "qualifications", force: :cascade do |t|
+    t.text "qualification"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_qualifications_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -81,6 +93,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_151406) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "applied_jobs", "job_posts"
+  add_foreign_key "applied_jobs", "users"
   add_foreign_key "job_posts", "categories"
   add_foreign_key "job_posts", "users"
+  add_foreign_key "qualifications", "users"
 end

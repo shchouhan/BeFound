@@ -1,4 +1,4 @@
-<div class = "tab">
+<div class = "tag">
 <h1 class = "abc ">Search Results</h1>
 <table border= '1'>
   <%= stylesheet_link_tag "main" %>
@@ -38,13 +38,14 @@
             <td class = "abc"><%= job_post.salary %></td>
             <td class = "abc"><%= job_post.qualification %></td>
             <td class = "abc"><%= link_to 'View', job_post %></td>
-            
+            <td class = "abc"><%= link_to 'Apply', apply_path(job_post) %></td>
+
         	</tr>
         	</tbody>
     	<% end %>
 		<% end %>
     <div class = "abc">
-      <%= link_to 'Back', root_path%>
+      <%= link_to 'Back', job_posts_path%>
     </div>
   </table>
 </div>

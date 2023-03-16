@@ -1,0 +1,33 @@
+<div class = "tab">
+<%= form_for @applied_job do |form| %>
+
+  <% if @applied_job.errors.any? %>
+    <% @applied_job.errors.full_messages.each do |message| %>
+      <p class = "abc"><%= message %></p>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Name %><br>
+    <%= form.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+  </div>
+  <div class="field">
+    <%= form.label :Email %><br>
+    <%= form.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>   
+   <div class="field">
+    <%= form.label :Contact %><br>
+    <%= form.text_field :contact, autofocus: true, autocomplete: "contact" %>
+  </div>  
+  <div class="field">
+    <%= form.label :Address %><br>
+    <%= form.text_field :address, autofocus: true, autocomplete: "address" %>
+  </div>
+  <div>
+    <%= form.label :Qualification %>
+    <%= form.label :qualification, autofocus: true, autocomplete: "qualification" %>
+  <div class = "field">
+    <%= form.submit 'Submit Post' %><br>
+  </div>
+</div>
+<% end %>

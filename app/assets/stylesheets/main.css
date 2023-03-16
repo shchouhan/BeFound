@@ -2,5 +2,15 @@
     background-color: lightblue;
 }
 .tab{
-    background-image: url(/assets/befound2.png);
+    background-repeat: no-repeat;
+    background-image: url(/assets/befound2.jpeg);
+    background-size: 100% 100%; 
+    height:100%;
+    box-shadow: 2px 2px 2px;
+    
+}
+.tag{
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    background-image: url(/assets/befound3.jpeg);
 }

@@ -1,0 +1,24 @@
+<div class = "tag">
+<p class = "abc"><%= notice %></p>
+
+<% if current_user.user_type == "contractor"%>
+  <h1 class = "abc">Applications on Your Job Post:-</h1>
+
+  <% @applications.each do|application| %>
+  	<tbody>
+  	  <tr>
+        <div class = "abc"><strong>Applicant name : </strong><%= application.user.user_name %></div><br>
+        <div class = "abc"><strong>Applicant email : </strong><%= application.user.email %></div><br>
+        <div class = "abc"><strong>Applicant contact :  </strong><%= application.user.contact %></div><br>
+        <div class = "abc"><strong>Applicant address : </strong><%= application.user.address %></div><br>
+        
+        <%# <td class = "abc"><%= link_to 'View', job_post %></td>
+        <%# <td class = "abc"><%= link_to 'Edit', edit_job_post_path(job_post) %>
+        <%# <td class = "abc"><%= link_to 'Delete', job_post_path(job_post), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
+  	  </tr>
+  	</tbody>
+  <% end %>
+  <div class = "abc" ><%= link_to 'Back', job_posts_path%> </div>
+<% end %>
+
+

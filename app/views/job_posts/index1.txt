@@ -1,0 +1,1 @@
+ <!--  <td class = "abc"><%= link_to 'Applications', show_applies_path(job_post)%><br> -->

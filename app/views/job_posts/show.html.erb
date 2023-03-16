@@ -1,7 +1,7 @@
 <div class = "tab">
 <p class = "abc"><%= notice %></p>
 
-<h1 class = "abc"> Your Job Post :-</h1>
+<h1 class = "abc"> Job Post :-</h1>
 
 <p class = "abc" ><strong>Job Role:</strong><%= @job_post.job_role %></p>
 <p class = "abc" ><strong>Job Description:</strong><%= @job_post.job_description %></p>
@@ -9,5 +9,4 @@
 <p class = "abc" ><strong>Salary:</strong><%= @job_post.salary %></p>
 <p class = "abc" ><strong>Qualification:</strong><%= @job_post.qualification %></p>
 
-<div class = "abc" ><%= link_to 'Back', job_posts_path%> | <%= link_to 'Edit', edit_job_post_path(@job_post) %></div>
-</div>
+<div class = "abc" ><%= link_to 'Back', job_posts_path%> </div>
