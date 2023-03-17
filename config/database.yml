@@ -23,11 +23,11 @@ default: &default
 
 development:
   <<: *default
-  username: BeFound
-  password: befound
   username: <%= Rails.application.credentials.database[:username] %>
   password: <%= Rails.application.credentials.database[:password] %>
   host: localhost
+  username: BeFound
+  password: befound
   database: BeFound_development
 
   # The specified database role being used to connect to postgres.
