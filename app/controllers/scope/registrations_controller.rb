@@ -8,7 +8,7 @@ class Scope::RegistrationsController < Devise::RegistrationsController
 
 
 
-  PUT /resource
+  #PUT /resource
   def update
    #super
     byebug
