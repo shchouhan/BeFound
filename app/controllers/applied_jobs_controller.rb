@@ -1,4 +1,4 @@
-# class AppliedJobsController < ApplicationController
+class AppliedJobsController < ApplicationController
 #   before_action :set_job_post, only: %i[show edit update destroy]
     
 #     def index
@@ -73,4 +73,4 @@
       
 #     end
         
-# end
+end
