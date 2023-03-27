@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  
   resources :job_posts 
   #resources :applied_jobs
   # get 'job_posts/index'
@@ -25,3 +26,4 @@ Rails.application.routes.draw do
   get 'home/show'
   get 'home/search'
 end
+ 

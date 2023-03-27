@@ -21,7 +21,7 @@ config.action_mailer.smtp_settings = {
   port:                 587,
   domain:               'example.com',
   user_name:            'shchouhan@bestpeers.com',
-  password:             'tgevghrczmuwhpyb',
+  password:             'rlsjpuywvygfnyfp',
   authentication:       'plain',
   enable_starttls_auto: true}
   

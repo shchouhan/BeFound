@@ -77,4 +77,8 @@ end
 
 gem "activeadmin", "~> 2.13"
 gem 'sassc-rails'
+gem 'cancancan'
+# gem 'paperclip'
+
+
 

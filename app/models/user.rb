@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :job_posts
   has_many :applied_jobs
-  has_many :qualifications
+ 
 
   enum user_type: { contractor:1, worker:2 }
 
@@ -13,8 +13,8 @@ class User < ApplicationRecord
          validates :user_name, :email, :encrypted_password, :address,  presence: true
          validates :contact, presence: {message: "Please enter only numbers!"}, numericality: true, length: { in:10..12}
 
-  # def has_applied?(job_post.id)
-  #   applied_job.find (job_post.id)
-  # end
-
+  
+  def contractor?
+    user_type == 'contractor'
+  end
 end

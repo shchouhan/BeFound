@@ -11,10 +11,7 @@
         <div class = "abc"><strong>Applicant email : </strong><%= application.user.email %></div><br>
         <div class = "abc"><strong>Applicant contact :  </strong><%= application.user.contact %></div><br>
         <div class = "abc"><strong>Applicant address : </strong><%= application.user.address %></div><br>
-        
-        <%# <td class = "abc"><%= link_to 'View', job_post %></td>
-        <%# <td class = "abc"><%= link_to 'Edit', edit_job_post_path(job_post) %>
-        <%# <td class = "abc"><%= link_to 'Delete', job_post_path(job_post), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
+        <div class = "abc"><strong>Applicant Qualifications : </strong><%= application.user.qualification %></div><br><br>
   	  </tr>
   	</tbody>
   <% end %>

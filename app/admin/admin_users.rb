@@ -1,6 +1,11 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation, :user_name, :contact, :address, :user_type
 
+  # controller do
+  #   skip_before_action :authenticate_user!, only: :new
+  # end
+
+  
   index do
     selectable_column
     id_column

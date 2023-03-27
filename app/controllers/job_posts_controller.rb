@@ -1,6 +1,7 @@
 class JobPostsController < ApplicationController
 before_action :set_job_post, only: %i[show edit update destroy]
-
+before_action :authenticate_user!
+load_and_authorize_resource :except => [:apply]
 
   def index
   
@@ -15,9 +16,14 @@ before_action :set_job_post, only: %i[show edit update destroy]
   end
 
   def search
-
-    @job_posts = JobPost.where("category_id = ?",params[:category_id])
-
+    if current_user.user_type == "contractor"
+      @job_posts = JobPost.where("category_id = ? AND user_id = ?",params[:category_id], current_user.id)
+    else
+      @job_posts = JobPost.where("category_id = ?",params[:category_id])
+    end
+    if @job_posts.empty?
+      redirect_to job_posts_path, notice: 'There are no search results in this category!'
+    end
   end
 
   def new
@@ -26,9 +32,7 @@ before_action :set_job_post, only: %i[show edit update destroy]
   end
 
   def create
-
-    @user_id = current_user.id
-    params[:job_post][:user_id] = @user_id
+    params[:job_post][:user_id] = current_user.id
     @job_post = JobPost.new(job_post_params)
     if @job_post.save
 
@@ -47,6 +51,7 @@ before_action :set_job_post, only: %i[show edit update destroy]
   end
 
   def update
+    
     if @job_post.update(job_post_params)
       redirect_to job_post_path(@job_post), notice: 'Your Job Post has been updated successfully!'
     else
@@ -56,12 +61,12 @@ before_action :set_job_post, only: %i[show edit update destroy]
   end
 
   def apply
-  
-    if AppliedJob.where("job_post_id = ? AND user_id = ?", params[:id],current_user.id).exists? == true
+    #render "job_application"
+    if AppliedJob.where("job_post_id = ? AND user_id = ?", params[:id],current_user.id).exists? 
       redirect_to job_posts_path(@job_post), notice: 'You have already applied for this job!'
 
     else
-
+      
       AppliedJob.create(user_id: current_user.id, job_post_id: params[:id])
       redirect_to job_posts_path(@job_post), notice: 'You have applied for this job successfully!'
     
@@ -70,18 +75,19 @@ before_action :set_job_post, only: %i[show edit update destroy]
   end
 
   def show_applies
-  
+    
     if current_user.user_type == "contractor"
 
       @applied_jobs =  AppliedJob.joins(:job_post).where(job_posts: {user_id: current_user.id}) 
+      
       @applications = @applied_jobs.where("job_post_id = ?", params[:id])
       
-      if @applications == nil
+      if @applications.empty?
         
         redirect_to job_posts_path, notice: 'There are no job applications on this job post yet!'
       end
     else
-      @job_posts = JobPost.all
+      redirect_to job_posts_path
     end
   end
 
