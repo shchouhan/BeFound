@@ -92,6 +92,6 @@ test:
 production:
   <<: *default
   database: BeFound_production
-  username: BeFound
+  username: postgres
   password: <%= ENV["BE_FOUND_DATABASE_PASSWORD"] %>
   url: <%= ENV["DATABASE_URL"] %>
