@@ -16,6 +16,33 @@
   	</tbody>
   <% end %>
   <div class = "abc" ><%= link_to 'Back', job_posts_path%> </div>
+
+<% else %>
+  <h1 class = "abc">Your Job Applications:- </h1>
+
+  <% @applied_jobs.each do|applied_job| %>
+  	<tbody>
+  	  <tr>
+        <div class = "abc"><strong>Job role : </strong><%= applied_job.job_post.job_role %></div><br>
+        <div class = "abc"><strong>Job description : </strong><%= applied_job.job_post.job_description %></div><br>
+        <div class = "abc"><strong>Vacancies :  </strong><%= applied_job.job_post.vacancies %></div><br>
+        <div class = "abc"><strong>Salary : </strong><%= applied_job.job_post.salary %></div><br>
+        <div class = "abc"><strong>Qualifications : </strong><%= applied_job.job_post.qualification %></div>
+  	    
+        <h3 class = "abc">Contact Details:-</h3>
+        
+        <div class = "abc"><strong>Posted By : </strong><%= applied_job.job_post.user.user_name %></div><br>
+        <div class = "abc"><strong>Email : </strong><%= applied_job.job_post.user.email %></div><br>
+        <div class = "abc"><strong>Contact number : </strong><%= applied_job.job_post.user.contact %></div><br>
+        <div class = "abc"><strong>Address : </strong><%= applied_job.job_post.user.address %></div><br><br>
+        
+        <h3>***********************************************</h3><br>
+
+      </tr>
+  	</tbody>
+  <% end %>
+  <div class = "abc" ><%= link_to 'Back', root_path%> </div>
+
 <% end %>
 
 

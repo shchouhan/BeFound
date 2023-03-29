@@ -11,8 +11,9 @@ class Ability
     else
      can :read, JobPost
      can :search, JobPost
+     can :manage, AppliedJob, user_id: current_user.id
      can :create, AppliedJob
-     can :manage, AppliedJob
+    
     end
 
 

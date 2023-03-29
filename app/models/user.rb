@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  mount_uploader :image, ImageUploader
+
   has_many :job_posts
   has_many :applied_jobs
  

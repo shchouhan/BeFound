@@ -3,6 +3,7 @@
 
 <h1 class = "abc"> Your Profile</h1>
 
+<p class = "abc img" ><strong>Profilepic:</strong><%= image_tag current_user.image.to_s, :size => "70x50" %></p>
 <p class = "abc" ><strong>Name:</strong><%= current_user.user_name %></p>
 <p class = "abc" ><strong>Email:</strong><%= current_user.email %></p>
 <p class = "abc" ><strong>Contact:</strong><%= current_user.contact %></p>

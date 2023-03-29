@@ -1,7 +1,7 @@
 class JobPostsController < ApplicationController
 before_action :set_job_post, only: %i[show edit update destroy]
 before_action :authenticate_user!
-load_and_authorize_resource :except => [:apply]
+load_and_authorize_resource :except => [:apply, :show_applies]
 
   def index
   
@@ -87,7 +87,11 @@ load_and_authorize_resource :except => [:apply]
         redirect_to job_posts_path, notice: 'There are no job applications on this job post yet!'
       end
     else
-      redirect_to job_posts_path
+      @applied_jobs = AppliedJob.where("user_id = ?",current_user.id)
+      if @applied_jobs.empty?
+        redirect_to root_path, notice: 'You have not applied for any job_post yet!'
+      end
+      #redirect_to job_posts_path
     end
   end
 

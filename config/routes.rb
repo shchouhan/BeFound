@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # get 'job_posts/index'
   get '/search' , to: "job_posts#search"
   get '/show_applies/:id' , to: "job_posts#show_applies"
+  get '/show_applies', to: "job_posts#show_applies"
   # get 'job_posts/new'
   # post 'job_posts/create'
   # get 'job_post/show'

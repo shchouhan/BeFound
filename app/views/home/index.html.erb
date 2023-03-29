@@ -1,29 +1,26 @@
 <div class = "tab">
-  <h1 class = "abc">Welcome to Be Found!</h1>
+  
   <% if user_signed_in? %> 
-    <p class = "abc"><%= notice %></p>
-    <div class = "abc"> Welcome <%= current_user.email %> </div><br> 
-    <div class = "abc"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
-    <div class = "abc">
-    <%= link_to('Profile', '/home/show')%>
-    </div>
-    <br><br>
-  
-    <% if current_user.user_type == "contractor"%>
-
-      <div class = "abc">
-        <%= link_to('Create New Job Post', new_job_post_path)%><br>
-      </div>
-     
-    <% end %>
+    <div class = "topnav">
+      <%= link_to('Profile', '/home/show')%>
+      <% if current_user.user_type == "contractor"%>
+        <%= link_to('Create New Job Post', new_job_post_path)%>
+      <% end %>
       
-    <div class = "abc">
       <%= link_to('Show all Job posts', job_posts_path)%>
-    </div> 
     
+      <% if current_user.user_type == "worker"%>
+        <%= link_to('My Applications', show_applies_path)%>
+      <% end %>
+      
+    </div>
+    <h1 class = "abc">Welcome to Be Found!</h1>
+    <p class = "abc"><%= notice %></p>
+    <div class = "abc"> Welcome <%= current_user.email %>....! </div><br> 
+    <div class = "abc"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
     
-  
-<% else %>
+  <% else %>
   <%= button_to "Sign in", new_user_session_path %> 
   <%= button_to "Sign in as Admin", new_admin_user_session_path %>
 <% end %>
+</div>
