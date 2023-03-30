@@ -7,7 +7,7 @@ load_and_authorize_resource :except => [:apply, :show_applies]
   
     if current_user.user_type == "contractor"
       @job_posts = JobPost.where("user_id = ?", current_user.id)
-      if @job_posts == nil
+      if @job_posts.empty?
         redirect_to root_path, notice: 'You have not created any job posts yet!'
       end
     else
