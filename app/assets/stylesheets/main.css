@@ -26,19 +26,33 @@ img {
 
 .topnav a {
   float: left;
-  color: #f2f2f2;
+  color: #A9A9A;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-family: system-ui;
   font-size: 17px;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #A9A9A9;
   color: black;
 }
 
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+.logout {
+  position: absolute;
+  top: 31px;
+  right: 10px;
+}
+
+.profile {
+  position: absolute;
+  top: 78px;
+  right: 20px;
+
 }

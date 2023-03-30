@@ -17,7 +17,10 @@
     <h1 class = "abc">Welcome to Be Found!</h1>
     <p class = "abc"><%= notice %></p>
     <div class = "abc"> Welcome <%= current_user.email %>....! </div><br> 
-    <div class = "abc"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
+    
+    <p class = "abc img profile" ><%= image_tag current_user.image.to_s, :size => "70x50" %></p>
+
+    <div class = "logout"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
     
   <% else %>
   <%= button_to "Sign in", new_user_session_path %> 
