@@ -1,6 +1,6 @@
 class ShortenedUrl < ApplicationRecord
 validates :short_url, uniqueness: true
-#validates :original_url, presence: true
+validates :original_url, presence: true
 validates :original_url, uniqueness: true
 #validates :short_url, presence: true
 #before_validation :generate_short_url, on: :create

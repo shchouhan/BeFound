@@ -20,12 +20,11 @@ class ShortenedUrlsController < ApplicationController
     #else
     #@shortened_url.short_url = generate_short_url
     #@shortened_url.short_url = @short_url
-      if @shortened_url.save
-        render :show,  status: :created
-      else
-        render :new,  status: :unprocessable_entity, notice: 'Url already exists'
-      end
-    #end
+    if @shortened_url.save
+      render :show,  status: :created
+    else
+      render :new,  status: :unprocessable_entity, notice: 'Url already exists'
+    end
   end 
 
   def show
@@ -56,9 +55,7 @@ class ShortenedUrlsController < ApplicationController
   private
 
   def shortened_url_params
-
     params.require(:shortened_url).permit(:original_url)
   end
 
- 
-end
+ end
