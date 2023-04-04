@@ -2,4 +2,4 @@
 
 <h3>Here's your shortened URL:</h3>
 
-<p><%= link_to @shortened_url.short_url, shortened_url_path(@shortened_url.short_url) %></p>
+<p><%= link_to @shortened_url.short_url, shortened_url_path(@shortened_url), target: "_blank" %></p>
