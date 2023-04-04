@@ -26,5 +26,7 @@ Rails.application.routes.draw do
   root to: "home#index" 
   get 'home/show'
   get 'home/search'
+
+  resources :shortened_urls
 end
  

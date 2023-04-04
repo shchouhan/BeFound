@@ -1,0 +1,28 @@
+<p><%= notice %></p>
+<%= form_with model: @shortened_url, url: shortened_urls_path do |form| %>
+  <% if @shortened_url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shortened_url.errors.count, "error") %> prohibited this URL from being shortened:</h2>
+      <ul>
+      <% @shortened_url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p><%= notice %></p>
+
+  <div class = "abc" ><%= link_to 'Back', root_path%></div>
+
+  <h2 class = "abc" >Generate your Tiny URL:-</h2>
+  <p><%= notice %></p>
+
+  <div class="field">
+    <div class = "abc" ><%= form.label :original_url %></div>
+    <%= form.text_field :original_url, placeholder: "Enter URL to be shortened" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Shorten URL" %>
+  </div>
+<% end %>

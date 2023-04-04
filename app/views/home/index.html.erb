@@ -2,6 +2,9 @@
   
   <% if user_signed_in? %> 
     <div class = "topnav">
+
+      <%= link_to('Home', root_path)%>
+
       <%= link_to('Profile', '/home/show')%>
       <% if current_user.user_type == "contractor"%>
         <%= link_to('Create New Job Post', new_job_post_path)%>
@@ -12,8 +15,11 @@
       <% if current_user.user_type == "worker"%>
         <%= link_to('My Applications', show_applies_path)%>
       <% end %>
-      
+
+      <%= link_to "All Tiny URLs", shortened_urls_path %>
+      <%= link_to "Generate Tiny URL", new_shortened_url_path%>
     </div>
+
     <h1 class = "abc">Welcome to Be Found!</h1>
     <p class = "abc"><%= notice %></p>
     <div class = "abc"> Welcome <%= current_user.email %>....! </div><br> 
