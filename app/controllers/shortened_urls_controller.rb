@@ -7,17 +7,13 @@ class ShortenedUrlsController < ApplicationController
   end
   
   def new
-    byebug
     @shortened_url = ShortenedUrl.new()
-    byebug
   end
   
   def create
     # params[:shortened_url][:original_url] = params[:original_url]
     @shortened_url = ShortenedUrl.new()
-    byebug
     @shortened_url = ShortenedUrl.new(shortened_url_params)
-    byebug
     # @original_url =ShortenedUrl.new() 
     #if @short_url.nil?
       #render :new,  status: :unprocessable_entity
@@ -62,7 +58,6 @@ class ShortenedUrlsController < ApplicationController
   private
 
   def shortened_url_params
-    byebug
     params.permit(:original_url)
     #params.require(:shortened_url).permit(:original_url)
   end
