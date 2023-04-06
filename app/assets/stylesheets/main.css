@@ -63,3 +63,8 @@ img {
   right: 20px;
 
 }
+
+a.topnav:active {
+  background-color: #A9A9A9;
+  color: black;
+}
