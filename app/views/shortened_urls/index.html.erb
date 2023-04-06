@@ -3,6 +3,32 @@
 
 <div class = "abc" ><%= link_to 'Back', root_path%></div>
 
+  <%#= link_to "Generate Tiny URL", new_shortened_url_path%>
+
+  <%= form_with model: @shortened_url, url: shortened_urls_path do |form| %>
+  <% if @shortened_url.present? %>
+    <% if @shortened_url.errors.any? %>
+      <% @shortened_url.errors.full_messages.each do |message| %>
+        <p class = "abc"><%= message %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+    <p><%#= notice %></p>
+
+    <h2 class = "abc" >Generate your Tiny URL:-</h2>
+    <p><%= notice %></p>
+
+    <div class="field">
+      <div class = "abc" ><%= form.label :original_url %></div>
+      <%= form.text_field :original_url, placeholder: "Enter URL to be shortened" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Shorten URL" %>
+    </div>
+  <% end %>
+
+
 <h1 class = "abc" >All Shortened URLs</h1>
 
 <table>
@@ -17,9 +43,12 @@
     <% @shortened_urls.each do |shortened_url| %>
       <tr>
         <td class = "abc" ><%= shortened_url.original_url %></td>
-        <td class = "abc" ><%= link_to shortened_url.short_url, shortened_url, target: "_blank" %></td>
+        <td class = "abc" ><%= link_to shortened_url_url(shortened_url.short_url), shortened_url_url(shortened_url.short_url), target: "_blank" %></td>
+
+      <!--  <td class = "abc" ><%#= link_to shortened_url.short_url, shortened_url_path(shortened_url.short_url), target: "_blank" %></td>
+        <td class = "abc" ><%#= link_to shortened_url.short_url, shortened_url, target: "_blank" %></td> -->
         <td class = "abc" ><%= shortened_url.click_count %></td>
-        <td class = "abc"><%= link_to 'Delete', shortened_url_path(shortened_url), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
+        <td class = "abc" ><%= link_to 'Delete', shortened_url_path(shortened_url), data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %></td>
 
       </tr>
     <% end %>

@@ -13,6 +13,31 @@
   <body>
   <p class="notice"><%#= notice %></p> 
   <p class="alert"><%= alert %></p> 
+
+  <% if user_signed_in? %> 
+    <div class = "topnav">
+
+      <%= link_to('Home', root_path)%>
+
+      <%= link_to('Profile', '/home/show')%>
+      <% if current_user.user_type == "contractor"%>
+        <%= link_to('Create New Job Post', new_job_post_path)%>
+      <% end %>
+      
+      <%= link_to('Show all Job posts', job_posts_path)%>
+    
+      <% if current_user.user_type == "worker"%>
+        <%= link_to('My Applications', show_applies_path)%>
+      <% end %>
+
+      <%= link_to "Tiny URLs", shortened_urls_path %>
+
+      <div class = "logout"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
+
+    </div>
+
+  <% end %>
+    
   <%= yield %><br><br>
   <marquee bgcolor = "skyblue" >Thanks for visiting! Welcome to "Be_Found"...An online job portal where you can post your need of work as well as worker and will "Be_Found"....!</marquee>
   </body>

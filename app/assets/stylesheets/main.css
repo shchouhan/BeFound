@@ -27,7 +27,7 @@ img {
 }
 
 .topnav {
-  background-color: #87CEEB			;
+  background-color: #87CEEB;
   overflow: hidden;
 }
 
@@ -46,9 +46,9 @@ img {
   color: black;
 }
 
-.topnav a.active {
+.topnav a:active {
   background-color: #A9A9A9;
-  color: white;
+  color: black;
 }
 
 .logout {

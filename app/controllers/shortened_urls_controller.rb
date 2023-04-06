@@ -7,19 +7,24 @@ class ShortenedUrlsController < ApplicationController
   end
   
   def new
+    byebug
     @shortened_url = ShortenedUrl.new()
+    byebug
   end
   
   def create
-    
+    # params[:shortened_url][:original_url] = params[:original_url]
+    @shortened_url = ShortenedUrl.new()
+    byebug
     @shortened_url = ShortenedUrl.new(shortened_url_params)
-    
+    byebug
     # @original_url =ShortenedUrl.new() 
     #if @short_url.nil?
       #render :new,  status: :unprocessable_entity
     #else
     #@shortened_url.short_url = generate_short_url
     #@shortened_url.short_url = @short_url
+    
     if @shortened_url.save
       render :show,  status: :created
     else
@@ -28,8 +33,10 @@ class ShortenedUrlsController < ApplicationController
   end 
 
   def show
-    #@shortened_url = ShortenedUrl.find_by_short_url(params[:short_url])
-    @shortened_url = ShortenedUrl.find(params[:id])
+    
+    @shortened_url = ShortenedUrl.find_by_short_url(params[:id])
+    #@shortened_url = ShortenedUrl.find(params[:id])
+    #@shortened_url = ShortenedUrl.where("short_url = ?",(params[:id]))
     #@shortened_url = ShortenedUrl.where("id = ?",params[:id])
     #if @shortened_url
     
@@ -55,7 +62,9 @@ class ShortenedUrlsController < ApplicationController
   private
 
   def shortened_url_params
-    params.require(:shortened_url).permit(:original_url)
+    byebug
+    params.permit(:original_url)
+    #params.require(:shortened_url).permit(:original_url)
   end
 
  end

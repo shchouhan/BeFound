@@ -1,3 +1,6 @@
+<%#= render "/shortened_urls/index", shortened_url: @shortened_url %>
+
+
 <p><%= notice %></p>
 <%= form_with model: @shortened_url, url: shortened_urls_path do |form| %>
   <% if @shortened_url.errors.any? %>

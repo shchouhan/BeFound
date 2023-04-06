@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   get 'home/search'
 
   resources :shortened_urls
+
+  #post '/shortened_urls' , to: "shortened_urls#create"
 end
  

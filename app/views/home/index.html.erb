@@ -1,7 +1,7 @@
 <div class = "tab">
   
   <% if user_signed_in? %> 
-    <div class = "topnav">
+  <!--  <div class = "topnav">
 
       <%= link_to('Home', root_path)%>
 
@@ -20,16 +20,18 @@
       <%= link_to "Generate Tiny URL", new_shortened_url_path%>
     </div>
 
+    -->
+
     <h1 class = "abc">Welcome to Be Found!</h1>
     <p class = "abc"><%= notice %></p>
     <div class = "abc"> Welcome <%= current_user.email %>....! </div><br> 
     
     <p class = "abc img profile" ><%= image_tag current_user.image.to_s, :size => "70x50" %></p>
 
-    <div class = "logout"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br>
+    <!--<div class = "logout"><%= button_to "Sign out", destroy_user_session_path, method: :delete %></div><br> -->
     
   <% else %>
-  <%= button_to "Sign in", new_user_session_path %> 
-  <%= button_to "Sign in as Admin", new_admin_user_session_path %>
-<% end %>
+    <%= button_to "Sign in", new_user_session_path %> 
+    <%= button_to "Sign in as Admin", new_admin_user_session_path %>
+  <% end %>
 </div>
